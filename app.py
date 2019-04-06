@@ -10,11 +10,11 @@ def home():
 def study_image():
     
 	image_url = request.form['url-input']
-	headers = {'Authorization': 'Key f2f339a3cc374420a221fa27e58a3202'}
+	headers = {'Authorization': 'Key 7b213217187e43eeaab874c849f449ec'}
 
-	api_url = "https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs"
+	url = "https://api.clarifai.com/v2/models/aaa03c23b3724a16a56b629203edc62c/outputs"
 
-	data ={"inputs": [
+	pic ={"inputs": [
 	      {
 	        "data": {
 	          "image": {
@@ -24,9 +24,8 @@ def study_image():
 	      }
 	    ]}
 
-	response = requests.post(api_url, headers=headers, data=json.dumps(data))
-
-	return render_template('home.html', results=response.content)
+	requesti = requests.post(url, headers=headers, data=json.dumps(pic))
+	return render_template('home.html', results=requesti.content)
 
 if __name__ == '__main__':
     app.run(debug=True)
